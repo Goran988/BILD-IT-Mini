@@ -26,17 +26,23 @@ public class Craps {
 			point = sum;														//and we  keep previous sum as "point" value
 			System.out.println("You rolled " + diceA + "+" + diceB
 					+ " point is " + sum);
-
+			do{																	//rolling dice until user wins or loses
 			diceA = (int) (Math.random() * 6 + 1);
 			diceB = (int) (Math.random() * 6 + 1);
 			sum = diceA + diceB;
 			if (point == sum) {													//if the new sum is equal to previous one user won, otherwise user lost
 				System.out.println("You rolled " + diceA + "+" + diceB);
 				System.out.println("You win");
-			} else {
+			} else if(sum==7) {
 				System.out.println("You rolled " + diceA + "+" + diceB);
 				System.out.println("You lose.");
+				break;
 			}
+			else{
+				System.out.println("You rolled "+diceA+" + " +diceB);
+				System.out.println("Roll again");
+			}
+			}while(point!=sum);
 		}
 	}
 

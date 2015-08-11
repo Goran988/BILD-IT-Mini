@@ -7,8 +7,8 @@ public class CrapsBonus {
 	 * is 7 or 11 (called natural), you win; if the sum is another value (i.e.,
 	 * 4, 5, 6, 8, 9, or 10), a point is established. Continue to roll the dice
 	 * until either a 7 or the same point value is rolled. If 7 is rolled, you
-	 * lose. Otherwise, you win.
-	 * Added loop that simulates 10000 plays and shows us how many times we won
+	 * lose. Otherwise, you win. Added loop that simulates 10000 plays and shows
+	 * us how many times we won
 	 */
 	public static void main(String[] args) {
 		int count = 0;											//counter for winning rouds
@@ -31,7 +31,7 @@ public class CrapsBonus {
 				point = sum;									//and we  keep previous sum as "point" value
 				System.out.println("You rolled " + diceA + "+" + diceB
 						+ " point is " + sum);
-
+				do{												//rolling dice until user wins or lose
 				diceA = (int) (Math.random() * 6 + 1);
 				diceB = (int) (Math.random() * 6 + 1);
 				sum = diceA + diceB;
@@ -39,13 +39,18 @@ public class CrapsBonus {
 					System.out.println("You rolled " + diceA + "+" + diceB);
 					System.out.println("You win");
 					count++;									//for every winning round we increment the counter
-				} else {
+				} else if(sum==7) {
 					System.out.println("You rolled " + diceA + "+" + diceB);
 					System.out.println("You lose.");
+					break;
 				}
+				else{
+					System.out.println("You rolled " + diceA + "+" + diceB);
+					System.out.println("Roll again");
+				}
+				}while(point!=sum);
 			}
 		}
 		System.out.println("After 10000 rolls you won " + count + " times");
 	}
-
 }
